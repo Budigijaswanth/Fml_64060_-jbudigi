@@ -1,0 +1,93 @@
+---
+title: "FML ASSIGNMENT 1-JASWANTH BUDIGI"
+author: "Jaswanth Budigi"
+date: "2024-02-02"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# 1)Download data set any source 
+
+# source kaggle link :https://www.kaggle.com/datasets/saketk511/travel-dataset-guide-to-indias-must-see-places
+```{r}
+library(reader)
+library(DescTools)
+```
+# 2)import data set in R
+```{r}
+Places_visit <- read.csv("C:/Users/jaswa/Downloads/Top Indian Places to Visit.csv")
+View(Places_visit)
+```
+```{r}
+# using the summary inside the see min value and max value 
+summary(Places_visit)
+```
+```{r}
+# using the head function
+head(Places_visit)
+```
+## 3)Print descriptive statistics for selected categorical variables
+#Mean
+```{r}
+mean(Places_visit$time.needed.to.visit.in.hrs)
+mean(Places_visit$Entrance.Fee.in.INR)
+
+```
+#median
+```{r}
+median(Places_visit$time.needed.to.visit.in.hrs)
+median(Places_visit$Entrance.Fee.in.INR)
+```
+```{r}
+# frequency of each unique value in  the column
+table(Places_visit$Significance)
+table(Places_visit$Zone)
+```
+```{r}
+#structure of the column Significance
+str(Places_visit$Significance)
+```
+```{r}
+#understand the categorical variables
+table(Places_visit$Best.Time.to.visit)
+```
+```{r}
+#structure of the column Best time to visit,google review ratings
+str(Places_visit$Best.Time.to.visit)
+str(Places_visit$Google.review.rating)
+```
+
+# 4)transforming the variables
+```{r}
+log(Places_visit$time.needed.to.visit.in.hrs)
+```
+
+```{r}
+b<-Places_visit$time.needed.to.visit.in.hrs-mean(Places_visit$time.needed.to.visit.in.hrs)/sd(Places_visit$time.needed.to.visit.in.hrs)
+View(b)
+```
+# 5)plotting the one  quantitative variables
+```{r}
+hist(Places_visit$time.needed.to.visit.in.hrs,main="HISTOGRAM OF time.needed.to.visit.in.hrs",col = "orange")
+```
+# plotting the scatter plot
+```{r}
+plot(Places_visit$time.needed.to.visit.in.hrs, Places_visit$Entrance.Fee.in.INR, 
+     main = "Scatterplot of Entrance.Fee.in.INR vs. time.needed.to.visit.in.hrs", 
+     xlab = "Entrance.Fee.in.INR", ylab = "time.needed.to.visit.in.hrs")
+```
+
+
+
+
+
+
+
+
+
